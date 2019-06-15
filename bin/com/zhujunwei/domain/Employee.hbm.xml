@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.zhujunwei.domain.Employee" table="employee">
+	
+		<!-- 建立OID与主键的映射 -->
+		<id name="e_id" column="e_id">
+			<!-- 主键生成策略 -->
+			<generator class="native"/>
+		</id>
+		
+		<!-- 普通属性 -->
+		<property name="e_name" column="e_name" />
+		
+		<!-- 配置多对一的关系：放置的是一的一方的对象 -->
+		<many-to-one name="department"  cascade="save-update" column="d_id" class="com.zhujunwei.domain.Department" />
+		
+	</class>
+</hibernate-mapping>

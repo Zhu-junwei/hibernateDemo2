@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="com.zhujunwei.domain.Department" table="department">
+	
+		<id name="d_id" column="d_id">
+			<generator class="native" />
+		</id>
+		
+		<property name="d_name" column="d_name" />
+		
+		<!-- 一对对的映射：放置的多的一方的集合 -->
+		<set name="employees" cascade="delete,save-update" inverse="true">
+			<!-- 多的一方外键名字 -->
+			<key column="d_id" />
+			<one-to-many class="com.zhujunwei.domain.Employee" />
+		</set>
+	</class>
+</hibernate-mapping>

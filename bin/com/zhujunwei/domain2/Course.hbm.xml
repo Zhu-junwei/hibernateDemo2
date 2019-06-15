@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.zhujunwei.domain2.Course" table="student">
+	
+		<id name="c_id" column="c_id">
+			<generator class="native" />
+		</id>
+		
+		<property name="c_name" />
+	
+		<set name="students" table="s_id">
+			<key column="c_id" />
+			<many-to-many class="com.zhujunwei.domain2.Student" column="s_id" />
+		</set>
+	</class>
+</hibernate-mapping>
